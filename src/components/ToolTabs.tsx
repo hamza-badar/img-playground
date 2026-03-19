@@ -27,7 +27,7 @@ interface ToolTabsProps {
 }
 
 const tabs: Array<{ key: ToolKey; label: string; description: string }> = [
-  { key: "gifToMp4", label: "GIF -> Video", description: "Convert GIFs to MP4 where supported, with WebM fallback on browsers that cannot record MP4." },
+  { key: "gifToMp4", label: "GIF -> Video", description: "Convert GIFs into MP4 in the browser, with WebM fallback if MP4 encoding is unavailable." },
   { key: "videoToGif", label: "Video -> GIF", description: "Turn MP4, MOV, and WebM clips into GIFs." },
   { key: "compressImage", label: "Compress Image", description: "Shrink image file size toward a target in KB." },
   { key: "resizeImage", label: "Resize Image", description: "Resize image dimensions with pixel or print units." },
@@ -102,7 +102,7 @@ export function ToolTabs(props: ToolTabsProps) {
 
       {activeTool === "gifToMp4" && (
         <div className="rounded-2xl bg-background/80 px-4 py-3 text-sm text-slate-600 dark:bg-slate-900/80 dark:text-slate-300">
-          This tool exports MP4 on browsers that support MP4 recording. Chrome and many Android devices may export WebM instead for better reliability.
+          This tool uses the in-browser conversion engine instead of screen-style recording, which is more reliable for tricky GIF frames. If MP4 encoding is unavailable, it falls back to WebM.
         </div>
       )}
 
