@@ -118,7 +118,7 @@ export default function App() {
         if (asset.kind !== "gif") {
           throw new Error("GIF to MP4 requires a GIF input.");
         }
-        setStatusMessage("Starting GIF to MP4 conversion...");
+        setStatusMessage("Starting GIF conversion...");
         processedFile = await gifToMp4(asset.file, setProgress, setStatusMessage);
       } else if (activeTool === "videoToGif") {
         if (asset.kind !== "video") {

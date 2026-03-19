@@ -27,7 +27,7 @@ interface ToolTabsProps {
 }
 
 const tabs: Array<{ key: ToolKey; label: string; description: string }> = [
-  { key: "gifToMp4", label: "GIF -> MP4", description: "Convert animated GIFs to lightweight MP4 files." },
+  { key: "gifToMp4", label: "GIF -> Video", description: "Convert GIFs to MP4 where supported, with WebM fallback on browsers that cannot record MP4." },
   { key: "videoToGif", label: "Video -> GIF", description: "Turn MP4, MOV, and WebM clips into GIFs." },
   { key: "compressImage", label: "Compress Image", description: "Shrink image file size toward a target in KB." },
   { key: "resizeImage", label: "Resize Image", description: "Resize image dimensions with pixel or print units." },
@@ -97,6 +97,12 @@ export function ToolTabs(props: ToolTabsProps) {
             <Label htmlFor="duration">Duration limit (seconds)</Label>
             <Input id="duration" type="number" min={1} max={30} value={gifDurationLimit} onChange={(event) => setGifDurationLimit(Number(event.target.value))} />
           </div>
+        </div>
+      )}
+
+      {activeTool === "gifToMp4" && (
+        <div className="rounded-2xl bg-background/80 px-4 py-3 text-sm text-slate-600 dark:bg-slate-900/80 dark:text-slate-300">
+          This tool exports MP4 on browsers that support MP4 recording. Chrome and many Android devices may export WebM instead for better reliability.
         </div>
       )}
 
